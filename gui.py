@@ -31,14 +31,15 @@ button_labels = [
     ["7", "8", "9", "/"],
     ["4", "5", "6", "*"],
     ["1", "2", "3", "-"],
-    ["C", "0", "=", "+"]
+    ["C", "0", "=", "+"],
+    ["Exit"]
 ]
 
 button_rects = []  # Holds the button positions
 
 # Calculate button dimensions
 button_width = SCREEN_WIDTH // 4
-button_height = (SCREEN_HEIGHT - 100) // 4  # Reserve space for the display
+button_height = (SCREEN_HEIGHT - 100) // 5  # Adjust for the extra row for "Exit"
 
 # Create button positions
 for row_idx, row in enumerate(button_labels):
@@ -87,6 +88,8 @@ try:
                                     current_input = str(eval(current_input))
                                 except Exception:
                                     current_input = "Error"
+                            elif label == "Exit":
+                                running = False  # Exit the application
                             else:
                                 current_input += label  # Append the button value
 
